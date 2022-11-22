@@ -1,0 +1,16 @@
+body {
+  background-color: #2c3333;
+  color: #ecebe1;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+canvas {
+  background-color: #4c4d5b;
+  border-radius: 20px;
+  width: 90%;
+  /* max-width: 600px; */
+  display: block;
+  margin: auto;
+}
