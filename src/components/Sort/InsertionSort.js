@@ -1,7 +1,5 @@
 import { useRef, useEffect } from 'react';
-import './InsertionSort.css';
-import Card from '../../UI/Card/Card';
-import { useSort } from '../SortProvider';
+import { useSort } from './SortProvider';
 
 function InsertionSort() {
   const {
@@ -139,12 +137,10 @@ function InsertionSort() {
 
   return (
     <>
-      <Card>
-        <h1>Insertion Sort</h1>
-        <button onClick={updateCanvas}>Start</button>
-        <button onClick={reload}>Reload</button>
-        <canvas {...canvasSize} ref={canvasRef} />
-      </Card>
+      <h1>Insertion Sort</h1>
+      <button onClick={updateCanvas}>Start</button>
+      <button onClick={reload}>Reload</button>
+      <canvas {...canvasSize} className='canvas' ref={canvasRef} />
     </>
   );
 }

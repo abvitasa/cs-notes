@@ -72,7 +72,7 @@ export const SortProvider = ({ children }) => {
     ctx.shadowColor = '#16213E';
     for (let i = 0; i < sortObj.numList.length; i++) {
       // Tiles-------------------------------------
-      ctx.shadowBlur = 20;
+      ctx.shadowBlur = 5;
       ctx.fillStyle = sortObj.numList[i].fillColor;
       ctx.fillRect(
         sortObj.numList[i].x,

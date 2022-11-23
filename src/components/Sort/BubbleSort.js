@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import styles from './BubbleSort.module.css';
-import Card from '../../UI/Card/Card';
-import Button from '../../UI/Button/Button';
-import { useSort } from '../SortProvider';
+import { useSort } from './SortProvider';
+import '../../App.css';
 
 const BubbleSort = () => {
   const {
@@ -79,14 +77,12 @@ const BubbleSort = () => {
   }, []);
 
   return (
-    <>
-      <Card>
-        <h1>Bubble Sort</h1>
-        <Button onClick={updateCanvas}>Start</Button>
-        <Button onClick={reload}>Reload</Button>
-        <canvas {...canvasSize} ref={canvasRef} />
-      </Card>
-    </>
+    <div className='body'>
+      <h1>Bubble Sort</h1>
+      <button onClick={updateCanvas}>Start</button>
+      <button onClick={reload}>Reload</button>
+      <canvas {...canvasSize} className='canvas' ref={canvasRef} />
+    </div>
   );
 };
 
