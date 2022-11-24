@@ -1,17 +1,17 @@
 import React from 'react';
 import { Breadcrumbs, Link, Stack } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { projRoutes } from '../../../ProjRoutes';
+import { projData } from '../../../ProjData';
 
 const ProjBreadcrumbs = () => {
-  const breadcrumbs = Object.keys(projRoutes).map((key) => {
-    if (!window.location.href.includes(projRoutes[key].path)) return null;
+  const breadcrumbs = Object.keys(projData).map((key) => {
+    if (!window.location.href.includes(projData[key].path)) return null;
     return (
       <Link
         underline='hover'
         key={key}
         color='inherit'
-        href={projRoutes[key].path}
+        href={projData[key].path}
       >
         {key}
       </Link>

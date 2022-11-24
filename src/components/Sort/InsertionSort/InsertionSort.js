@@ -1,5 +1,9 @@
-import { useRef, useEffect } from 'react';
-import { useSort } from './SortProvider';
+import React, { useRef, useEffect } from 'react';
+import { useSort } from '../SortProvider';
+import SortTitle from '../../UI/Title/SortTitle';
+import CanvasContent from '../../UI/Canvas/CanvasContent';
+import SortTable from '../../UI/Table/SortTable';
+import '../../../App.css';
 
 function InsertionSort() {
   const {
@@ -20,11 +24,12 @@ function InsertionSort() {
   const insertionSort = createSortObj();
 
   const updatePointer = () => {
-    if (insertionSort.pointerMinor < 0) {
+    const { pointerMinor, pointerMain, quantity } = insertionSort;
+    if (pointerMinor < 0) {
       insertionSort.pointerMain++;
-      insertionSort.pointerMinor = insertionSort.pointerMain - 1;
+      insertionSort.pointerMinor = pointerMain - 1;
     }
-    if (insertionSort.pointerMain >= insertionSort.quantity) {
+    if (pointerMain >= quantity) {
       insertionSort.numIsSorted = true;
     }
   };
@@ -39,8 +44,15 @@ function InsertionSort() {
       insertionSort.pointerMinor,
     ];
 
-    const { num, numList, defaultX, defaultY, movingUp, rightOfMinor } =
-      insertionSort;
+    const {
+      num,
+      numList,
+      defaultX,
+      defaultY,
+      movingUp,
+      rightOfMinor,
+      indexes,
+    } = insertionSort;
 
     changeNumColorToSelected(
       insertionSort,
@@ -51,26 +63,17 @@ function InsertionSort() {
 
     switch (true) {
       case numList[pointerMain].y >= defaultY[pointerMain] * 0.2 && movingUp:
-        moveNumbersUp(
-          insertionSort,
-          pointerMain,
-          pointerMinor,
-          ...insertionSort.indexes
-        );
+        moveNumbersUp(insertionSort, pointerMain, pointerMinor, ...indexes);
         break;
 
       case num[pointerMain] < num[pointerMinor] && pointerMinor === 0:
         if (numList[pointerMain].x > defaultX[pointerMinor]) {
           moveNumbersLeft(insertionSort, pointerMain);
           if (numList[pointerMinor].x < defaultX[pointerMinor + 1]) {
-            moveNumbersRight(
-              insertionSort,
-              ...insertionSort.indexes,
-              pointerMinor
-            );
+            moveNumbersRight(insertionSort, ...indexes, pointerMinor);
           }
         } else {
-          insertionSort.num.splice(0, 0, insertionSort.num[pointerMain]);
+          insertionSort.num.splice(0, 0, num[pointerMain]);
           insertionSort.num.splice(pointerMain + 1, 1);
           insertionSort.rightOfMinor = false;
         }
@@ -80,7 +83,7 @@ function InsertionSort() {
         if (numList[pointerMain].x > defaultX[pointerMinor + 1]) {
           moveNumbersLeft(insertionSort, pointerMain);
           if (numList[pointerMinor + 1].x < defaultX[pointerMinor + 2]) {
-            moveNumbersRight(insertionSort, ...insertionSort.indexes);
+            moveNumbersRight(insertionSort, ...indexes);
           }
         } else {
           insertionSort.num.splice(
@@ -103,16 +106,11 @@ function InsertionSort() {
         break;
 
       default:
-        updateNumList(
-          insertionSort,
-          pointerMain,
-          pointerMinor,
-          ...insertionSort.indexes
-        );
+        updateNumList(insertionSort, pointerMain, pointerMinor, ...indexes);
         insertionSort.movingUp = true;
         if (num[pointerMain] >= num[pointerMinor]) {
           insertionSort.pointerMain++;
-          insertionSort.pointerMinor = insertionSort.pointerMain - 1;
+          insertionSort.pointerMinor = pointerMain;
           insertionSort.indexes = [];
         } else {
           insertionSort.rightOfMinor = true;
@@ -136,12 +134,16 @@ function InsertionSort() {
   }, []);
 
   return (
-    <>
-      <h1>Insertion Sort</h1>
-      <button onClick={updateCanvas}>Start</button>
-      <button onClick={reload}>Reload</button>
-      <canvas {...canvasSize} className='canvas' ref={canvasRef} />
-    </>
+    <div className='body'>
+      <SortTitle title={'Insertion Sort'} />
+      <SortTable sortType={'Insertion Sort'} />
+      <CanvasContent
+        updateCanvas={updateCanvas}
+        reload={reload}
+        canvasSize={canvasSize}
+        canvasRef={canvasRef}
+      />
+    </div>
   );
 }
 

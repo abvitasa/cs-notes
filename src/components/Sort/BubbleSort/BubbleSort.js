@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from 'react';
-import { useSort } from './SortProvider';
-import '../../App.css';
+import { useSort } from '../SortProvider';
+import SortTitle from '../../UI/Title/SortTitle';
+import CanvasContent from '../../UI/Canvas/CanvasContent';
+import SortTable from '../../UI/Table/SortTable';
+import '../../../App.css';
 
 const BubbleSort = () => {
   const {
@@ -19,6 +22,15 @@ const BubbleSort = () => {
   } = useSort();
   const canvasRef = useRef(null);
   const bubbleSort = createSortObj();
+
+  useEffect(() => {
+    if (!bubbleSort.num.length) {
+      bubbleSort.indexes = [0, 1];
+      createNumList(bubbleSort, canvasSize);
+      drawCanvas(bubbleSort, canvasRef);
+    }
+    // eslint-disable-next-line
+  }, []);
 
   const updateIndex = () => {
     if (bubbleSort.indexes[1] >= bubbleSort.quantity) {
@@ -67,21 +79,16 @@ const BubbleSort = () => {
     requestAnimationFrame(updateCanvas);
   };
 
-  useEffect(() => {
-    if (!bubbleSort.num.length) {
-      bubbleSort.indexes = [0, 1];
-      createNumList(bubbleSort, canvasSize);
-      drawCanvas(bubbleSort, canvasRef);
-    }
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div className='body'>
-      <h1>Bubble Sort</h1>
-      <button onClick={updateCanvas}>Start</button>
-      <button onClick={reload}>Reload</button>
-      <canvas {...canvasSize} className='canvas' ref={canvasRef} />
+      <SortTitle title={'Bubble Sort'} />
+      <SortTable sortType={'Bubble Sort'} />
+      <CanvasContent
+        updateCanvas={updateCanvas}
+        reload={reload}
+        canvasSize={canvasSize}
+        canvasRef={canvasRef}
+      />
     </div>
   );
 };

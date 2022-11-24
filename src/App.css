@@ -6,11 +6,9 @@ Site: https://www.happyhues.co/palettes/3
 
 .canvas {
   background-color: #90b4ce;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 900px;
-  display: block;
-  margin: auto;
+  max-width: 700px;
 }
 
 .body {
@@ -29,11 +27,22 @@ Site: https://www.happyhues.co/palettes/3
 }
 
 .headline {
-  background-color: #094067;
+  color: #094067;
 }
 
 .paragraph {
   background-color: #5f6c7b;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.table-cell {
+  padding-right: 4;
+  padding-left: 4;
 }
 
 /* Illustration--------------------------------------- */

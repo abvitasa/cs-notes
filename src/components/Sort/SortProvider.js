@@ -5,14 +5,14 @@ const SortContext = createContext();
 export const SortProvider = ({ children }) => {
   const canvasSize = {
     width: window.innerWidth,
-    height: window.innerWidth * 0.25,
+    height: window.innerWidth * 0.35,
   };
 
   const createSortObj = () => {
     return {
       numIsSorted: false,
       movingUp: true,
-      quantity: 10,
+      quantity: 8,
       defaultX: [],
       defaultY: [],
       numList: [],
@@ -24,13 +24,13 @@ export const SortProvider = ({ children }) => {
 
   const createNumList = (sortObj, canvasSize) => {
     const numObj = {
-      tileSize: 0.08 * canvasSize.width,
-      speedX: canvasSize.width * 0.006,
-      speedY: canvasSize.width * 0.006,
+      tileSize: 0.11 * canvasSize.width,
+      speedX: canvasSize.width * 0.007,
+      speedY: canvasSize.width * 0.007,
       num: '',
       x: '',
       y: '',
-      font: `${0.08 * canvasSize.width * 0.8}px Georgia, serif`,
+      font: `${0.08 * canvasSize.width}px Georgia, serif`,
       fontColor: 'black',
       selectedColor: '#FCE38A',
       fillColor: '#FEF5ED',
@@ -49,7 +49,8 @@ export const SortProvider = ({ children }) => {
         newNum.x =
           sortObj.numList[i - 1].x +
           sortObj.numList[i - 1].tileSize +
-          canvasSize.width * 0.015;
+          (canvasSize.width * 0.94 - newNum.tileSize * sortObj.quantity) /
+            (sortObj.quantity - 1);
       } else {
         newNum.x = 0.03 * canvasSize.width;
       }
@@ -68,7 +69,11 @@ export const SortProvider = ({ children }) => {
 
   const drawCanvas = (sortObj, canvasRef) => {
     const ctx = canvasRef.current.getContext('2d');
+    const scale = window.devicePixelRatio;
 
+    canvasRef.current.width = canvasSize.width * scale;
+    canvasRef.current.height = canvasSize.height * scale;
+    ctx.scale(scale, scale);
     ctx.shadowColor = '#16213E';
     for (let i = 0; i < sortObj.numList.length; i++) {
       // Tiles-------------------------------------

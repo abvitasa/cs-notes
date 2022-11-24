@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SortProvider } from './components/Sort/SortProvider';
 import ProjDrawer from './components/UI/Drawer/ProjDrawer';
-import { projRoutes } from './ProjRoutes';
+import { projData } from './ProjData';
 
 const App = () => {
-  const routes = Object.keys(projRoutes).map((key) => {
+  const routes = Object.keys(projData).map((key) => {
     return (
       <Route
-        path={projRoutes[key].path}
-        element={projRoutes[key].element}
-        key={projRoutes[key].path}
+        path={projData[key].path}
+        element={projData[key].element}
+        key={projData[key].path}
       />
     );
   });
