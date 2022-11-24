@@ -4,6 +4,7 @@ import SortTitle from '../../UI/Title/SortTitle';
 import CanvasContent from '../../UI/Canvas/CanvasContent';
 import SortTable from '../../UI/Table/SortTable';
 import '../../../App.css';
+import InsertionSortWiki from './InsertionSortWiki';
 
 function InsertionSort() {
   const {
@@ -136,6 +137,7 @@ function InsertionSort() {
   return (
     <div className='body'>
       <SortTitle title={'Insertion Sort'} />
+      <InsertionSortWiki />
       <SortTable sortType={'Insertion Sort'} />
       <CanvasContent
         updateCanvas={updateCanvas}

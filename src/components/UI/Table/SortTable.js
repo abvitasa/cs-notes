@@ -15,7 +15,7 @@ const SortTable = ({ sortType }) => {
   const worstSpace = projData[sortType].worstSpace;
 
   return (
-    <Paper className='table'>
+    <Paper className='table' sx={{ my: 2 }}>
       <Table sx={{ minWidth: 340 }}>
         <TableHead>
           <TableRow>

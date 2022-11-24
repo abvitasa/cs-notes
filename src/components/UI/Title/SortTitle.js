@@ -4,9 +4,10 @@ import { Box } from '@mui/system';
 const SortTitle = ({ title }) => {
   return (
     <Typography variant='h4' gutterBottom>
-      <Box sx={{ fontWeight: 'bold', m: 0 }}>
+      <Box sx={{ fontWeight: 'bold', my: 2 }}>
         <span className='headline'>{title}</span>
       </Box>
+      <hr />
     </Typography>
   );
 };

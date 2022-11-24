@@ -4,6 +4,7 @@ import SortTitle from '../../UI/Title/SortTitle';
 import CanvasContent from '../../UI/Canvas/CanvasContent';
 import SortTable from '../../UI/Table/SortTable';
 import '../../../App.css';
+import BubbleSortWiki from './BubbleSortWiki';
 
 const BubbleSort = () => {
   const {
@@ -82,6 +83,7 @@ const BubbleSort = () => {
   return (
     <div className='body'>
       <SortTitle title={'Bubble Sort'} />
+      <BubbleSortWiki />
       <SortTable sortType={'Bubble Sort'} />
       <CanvasContent
         updateCanvas={updateCanvas}
