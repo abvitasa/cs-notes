@@ -91,6 +91,7 @@ const ProjDrawer = (props) => {
   const drawerTemp = (
     <Drawer
       container={container}
+      disableScrollLock={true}
       variant='temporary'
       open={mobileOpen}
       onClose={handleDrawerToggle}

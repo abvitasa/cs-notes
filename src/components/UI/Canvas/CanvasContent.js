@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import { Stack } from '@mui/system';
 import SortTitle from '../Title/SortTitle';
 
@@ -6,6 +6,10 @@ const CanvasContent = ({ updateCanvas, reload, canvasSize, canvasRef }) => {
   return (
     <>
       <SortTitle title={'Demo'} />
+      <p>
+        Press <strong>Start</strong> to begin demonstration. Press{' '}
+        <strong>Restart</strong> for new set of numbers.
+      </p>
       <Stack
         justifyContent='center'
         alignItems='center'
@@ -34,7 +38,6 @@ const CanvasContent = ({ updateCanvas, reload, canvasSize, canvasRef }) => {
             Restart
           </Button>
         </Stack>
-
         <canvas {...canvasSize} className='canvas' ref={canvasRef} />
       </Stack>
     </>

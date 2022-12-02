@@ -5,6 +5,7 @@ import CanvasContent from '../../UI/Canvas/CanvasContent';
 import SortTable from '../../UI/Table/SortTable';
 import '../../../App.css';
 import InsertionSortWiki from './InsertionSortWiki';
+import InsertionSortSnippet from './InsertionSortSnippet';
 
 function InsertionSort() {
   const {
@@ -145,6 +146,7 @@ function InsertionSort() {
         canvasSize={canvasSize}
         canvasRef={canvasRef}
       />
+      <InsertionSortSnippet />
     </div>
   );
 }

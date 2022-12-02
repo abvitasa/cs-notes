@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SortProvider } from './components/Sort/SortProvider';
 import ProjDrawer from './components/UI/Drawer/ProjDrawer';
 import { projData } from './ProjData';
+// import './App.css';
 
 const App = () => {
   const routes = Object.keys(projData).map((key) => {

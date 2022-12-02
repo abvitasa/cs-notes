@@ -5,6 +5,7 @@ import CanvasContent from '../../UI/Canvas/CanvasContent';
 import SortTable from '../../UI/Table/SortTable';
 import '../../../App.css';
 import BubbleSortWiki from './BubbleSortWiki';
+import BubbleSortSnippet from './BubbleSortSnippet';
 
 const BubbleSort = () => {
   const {
@@ -91,6 +92,7 @@ const BubbleSort = () => {
         canvasSize={canvasSize}
         canvasRef={canvasRef}
       />
+      <BubbleSortSnippet />
     </div>
   );
 };

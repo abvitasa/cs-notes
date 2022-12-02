@@ -11,11 +11,14 @@ Site: https://www.happyhues.co/palettes/3
   max-width: 700px;
 }
 
-.body {
+body {
   background-color: #fffffe;
   align-items: center;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .button {
@@ -37,7 +40,7 @@ Site: https://www.happyhues.co/palettes/3
 .table {
   width: 100%;
   display: flex;
-  overflow-x: hidden;
+  /* overflow-x: auto; */
 }
 
 .table-cell {
